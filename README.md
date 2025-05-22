@@ -1,4 +1,4 @@
-# Gentrify
+# Tmux Gentrify
 
 A brutally elegant tmux plugin that lets you evict panes from their old windows and relocate them wherever you please.
 
@@ -14,5 +14,5 @@ No naming windows. No navigating sessions. Just move panes like you’re draggin
 Add this line to your `.tmux.conf`:
 
 ```tmux
-set -g @plugin 'kristopolous/gentrify'
+set -g @plugin 'kristopolous/tmux-gentrify'
 
