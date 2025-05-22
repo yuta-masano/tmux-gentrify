@@ -2,7 +2,7 @@
 
 stack=$(tmux show -gqv @gentrify_pane_stack)
 if [[ -z "$stack" ]]; then
-  tmux display-message "Gentrify: paste buffer empty"
+  tmux display-message "Gentrify: paste stack empty"
   exit 0
 fi
 
