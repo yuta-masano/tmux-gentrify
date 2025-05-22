@@ -3,7 +3,7 @@
 stack=$(tmux show -gqv @gentrify_pane_stack)
 if [[ -z "$stack" ]]; then
   tmux display-message "Gentrify: paste buffer empty"
-  exit 1
+  exit 0
 fi
 
 # Extract first pane_id from stack
