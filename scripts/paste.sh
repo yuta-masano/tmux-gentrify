@@ -9,13 +9,12 @@ fi
 # Extract first pane_id from stack
 IFS=',' read -r first_pane rest <<< "$stack"
 
-# Update stack without first pane
-tmux set -g @gentrify_pane_stack "$rest"
+current_pane=$(tmux display-message -p "#{pane_id}")
 
-if ! tmux join-pane -s "$first_pane"; then
-  # If that fails, join to current window instead
-  current_window=$(tmux display-message -p "#{window_id}")
-  tmux join-pane -s "$first_pane" -t "$current_window"
+if tmux swap-pane -s "$first_pane" -t "$current_pane"; then
+  tmux kill-pane -t "$current_pane"
+  tmux set -g @gentrify_pane_stack "$rest"
+  tmux select-pane -t "$first_pane" -P ""
+else
+  tmux display-message "Gentrify: failed to paste pane"
 fi
-
-tmux select-pane -t "$first_pane" -P ""
