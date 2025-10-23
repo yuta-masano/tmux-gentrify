@@ -15,8 +15,7 @@ tmux set -g @gentrify_pane_stack "$rest"
 if ! tmux join-pane -s "$first_pane"; then
   # If that fails, join to current window instead
   current_window=$(tmux display-message -p "#{window_id}")
-  tmux join-pane -s "$fist_pane" -t "$current_window"
+  tmux join-pane -s "$first_pane" -t "$current_window"
 fi
 
 tmux select-pane -t "$first_pane" -P ""
-
